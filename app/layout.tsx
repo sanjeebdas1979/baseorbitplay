@@ -42,7 +42,7 @@ export const metadata: Metadata = {
   },
 
   other: {
-    "base:app_id": "6a6510ba8ce641820ba172cf",
+    "base:app_id": "6a7e136dc58cd20a9e42164a",
 
     "talentapp:project_verification":
       "8e3e7113aa8bd85bd9ca8cfe2425b309bcdfd2847bebf71c58227e00f4192443c07a67c9ce5d433356f42ee025b35b21c664e615bdb885a1bf27043038b74f5b",
