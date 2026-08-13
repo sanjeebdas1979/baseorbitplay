@@ -4,7 +4,7 @@ import { injected } from "wagmi/connectors";
 import { Attribution } from "ox/erc8021";
 
 const DATA_SUFFIX = Attribution.toDataSuffix({
-  codes: ["bc_jm5fm9om"],
+  codes: ["bc_pst67myc"],
 });
 
 export const wagmiConfig = createConfig({
