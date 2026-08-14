@@ -2,6 +2,7 @@
 
 import Link from "next/link";
 import { useEffect } from "react";
+import { Attribution } from "ox/erc8021";
 
 import {
   useAccount,
@@ -21,6 +22,10 @@ import {
 } from "@/config/dailyOrbitPass";
 
 const BASE_CHAIN_ID = 8453;
+
+const DATA_SUFFIX = Attribution.toDataSuffix({
+  codes: ["bc_pst67myc"],
+});
 
 function shortenAddress(address: string) {
   return `${address.slice(0, 6)}...${address.slice(-4)}`;
@@ -116,20 +121,13 @@ export default function OrbitAccess() {
     confirmations: 1,
   });
 
-  /*
-   * After the activation transaction confirms,
-   * Base/RPC state can take a moment to reflect
-   * hasActivePass = true.
-   *
-   * Instead of requiring a manual page refresh,
-   * retry the contract read automatically.
-   */
   useEffect(() => {
     if (!isConfirmed || hasActivePass) {
       return;
     }
 
     let cancelled = false;
+
     let timeoutId:
       | ReturnType<typeof setTimeout>
       | undefined;
@@ -197,6 +195,7 @@ export default function OrbitAccess() {
       functionName:
         "activateDailyOrbit",
       chainId: BASE_CHAIN_ID,
+      dataSuffix: DATA_SUFFIX,
     });
   };
 
@@ -442,10 +441,12 @@ export default function OrbitAccess() {
                       ✓ Unlimited ranked runs
                       today
                     </p>
+
                     <p>
                       ✓ Official leaderboard
                       access
                     </p>
+
                     <p>
                       ✓ No contract payment
                       required
